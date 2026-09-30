@@ -59,11 +59,19 @@ app.use("/menu", menuRoutes);
 app.use("/orders", orderRoutes);
 app.use("/payments", paymentRoutes);
 
+// // ==========================================
+// // SERVE REACT FRONTEND
+// // ==========================================
+// const frontendPath = path.join(__dirname, "../frontend/dist");
+// app.use(express.static(frontendPath));
+
 // ==========================================
-// SERVE REACT FRONTEND
+// SERVE REACT FRONTEND (REPLACED)
 // ==========================================
-const frontendPath = path.join(__dirname, "../frontend/dist");
-app.use(express.static(frontendPath));
+app.get("/", (req, res) => {
+  res.json({ message: "Restaurant API is running smoothly!" });
+});
+
 
 // ==========================================
 // REACT ROUTING FALLBACK
